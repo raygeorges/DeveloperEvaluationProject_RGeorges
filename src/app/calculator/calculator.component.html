@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12">
+    <input name="userinput" type="text" #userinput="ngModel" [ngModel]="input" required (keyup.enter)="checkInput(userinput.value)" [disabled]="calculating" />
+    <button class="btn btn-primary" name="calculatebutton" type="button" (click)="checkInput(userinput.value)" [disabled]="calculating">Calculate</button>
+      <div *ngIf="userinput.invalid && (userinput.dirty || userinput.touched)"
+            class="alert alert-danger">
+        <div *ngIf="userinput.errors?.required">
+          A comma separated numerical input is required.
+        </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+    <div *ngIf="calculations.mean" class="col-md-12">
+      <div class="col-md-4">
+        <label for="mean">
+          Mean:{{calculations.mean}}
+        </label>
+        <label for="median">
+          Median:{{calculations.median}}
+        </label>
+        <label for="mode">
+          Mode:{{calculations.mode}}
+        </label>
+      </div>
+    </div>
+</div>
